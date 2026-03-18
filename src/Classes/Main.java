@@ -1,5 +1,7 @@
 package Classes;
 
+import Telas.CadastroCVIEW;
+
 
 public class Main {
     
@@ -8,6 +10,9 @@ public class Main {
         
         ConexaoDB conector = new ConexaoDB();
         conector.conectDB();
+        
+        CadastroCVIEW tela = new CadastroCVIEW();
+        tela.setVisible(true);
 
     }
 
