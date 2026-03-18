@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Classes;
 
-/**
- *
- * @author lxn56
- */
+
 public class Guitarras {
+    private Integer id;
+    private String marca;
+    private String modelo;
+    private String fabricacao;
+    private String cor;
+    private Integer preco;
     
 }

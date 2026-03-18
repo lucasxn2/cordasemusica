@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Classes;
 
-/**
- *
- * @author lxn56
- */
+
 public class Vendas {
+    private Integer idCliente;
+    private Integer idGuitarra;
+    private String dataVenda;
     
 }
