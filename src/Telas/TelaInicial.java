@@ -29,9 +29,9 @@ public class TelaInicial extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnClientes = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnGuitarras = new javax.swing.JButton();
+        btnNovaVenda = new javax.swing.JButton();
+        btnVendas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,14 +65,29 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jButton2.setText("Guitarras");
+        btnGuitarras.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        btnGuitarras.setText("Guitarras");
+        btnGuitarras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuitarrasActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jButton3.setText("Nova Venda");
+        btnNovaVenda.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        btnNovaVenda.setText("Nova Venda");
+        btnNovaVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovaVendaActionPerformed(evt);
+            }
+        });
 
-        jButton4.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jButton4.setText("Tabela de Vendas");
+        btnVendas.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        btnVendas.setText("Tabela de Vendas");
+        btnVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,14 +98,14 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(155, 155, 155)
-                        .addComponent(jButton4))
+                        .addComponent(btnVendas))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(181, 181, 181)
-                        .addComponent(jButton3))
+                        .addComponent(btnNovaVenda))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(196, 196, 196)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
+                            .addComponent(btnGuitarras)
                             .addComponent(btnClientes))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -101,11 +116,11 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addComponent(btnClientes)
                 .addGap(65, 65, 65)
-                .addComponent(jButton2)
+                .addComponent(btnGuitarras)
                 .addGap(68, 68, 68)
-                .addComponent(jButton3)
+                .addComponent(btnNovaVenda)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(btnVendas)
                 .addGap(71, 71, 71))
         );
 
@@ -118,6 +133,24 @@ public class TelaInicial extends javax.swing.JFrame {
         CadastroCVIEW cadastro = new CadastroCVIEW(); 
         cadastro.setVisible(true);
     }//GEN-LAST:event_btnClientesActionPerformed
+
+    private void btnGuitarrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuitarrasActionPerformed
+        // TODO add your handling code here:
+        CadastroGVIEW cadastro = new CadastroGVIEW();
+        cadastro.setVisible(true);
+    }//GEN-LAST:event_btnGuitarrasActionPerformed
+
+    private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
+        // TODO add your handling code here:
+        ListaVendasVIEW lista = new ListaVendasVIEW();
+        lista.setVisible(true);
+    }//GEN-LAST:event_btnVendasActionPerformed
+
+    private void btnNovaVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaVendaActionPerformed
+        // TODO add your handling code here:
+        CadastroVendasVIEW cadastro = new CadastroVendasVIEW();
+        cadastro.setVisible(true);
+    }//GEN-LAST:event_btnNovaVendaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,9 +189,9 @@ public class TelaInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClientes;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnGuitarras;
+    private javax.swing.JButton btnNovaVenda;
+    private javax.swing.JButton btnVendas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

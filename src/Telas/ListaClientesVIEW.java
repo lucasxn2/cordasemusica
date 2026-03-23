@@ -8,14 +8,18 @@ import javax.swing.table.DefaultTableModel;
 
 public class ListaClientesVIEW extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ListaClientesVIEW
-     */
+private DefaultTableModel tablemodel;
+
     public ListaClientesVIEW() {
         initComponents();
+        iniciarTabela();
         listarClientes();
     }
 
+    public void iniciarTabela(){
+    tablemodel = new DefaultTableModel(new Object[]{"ID", "Nome", "CPF", "Telefone", "Email"}, 0);
+    listaClientes.setModel(tablemodel);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,7 +31,7 @@ public class ListaClientesVIEW extends javax.swing.JFrame {
 
         btnVoltar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        listaProdutos = new javax.swing.JTable();
+        listaClientes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         btnExcluirCliente = new javax.swing.JButton();
 
@@ -41,7 +45,7 @@ public class ListaClientesVIEW extends javax.swing.JFrame {
             }
         });
 
-        listaProdutos.setModel(new javax.swing.table.DefaultTableModel(
+        listaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -52,7 +56,7 @@ public class ListaClientesVIEW extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(listaProdutos);
+        jScrollPane2.setViewportView(listaClientes);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
         jLabel1.setText("Lista de Clientes");
@@ -65,24 +69,23 @@ public class ListaClientesVIEW extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(222, 222, 222))
+                .addGap(0, 35, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(222, 222, 222))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnVoltar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 38, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(42, 42, 42))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnExcluirCliente)
-                                .addGap(272, 272, 272))))))
+                        .addContainerGap()
+                        .addComponent(btnVoltar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(283, 283, 283)
+                        .addComponent(btnExcluirCliente)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,6 +102,7 @@ public class ListaClientesVIEW extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -146,14 +150,14 @@ public class ListaClientesVIEW extends javax.swing.JFrame {
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable listaProdutos;
+    private javax.swing.JTable listaClientes;
     // End of variables declaration//GEN-END:variables
 
     private void listarClientes() {
         try {
             ClientesDAO clientesdao = new ClientesDAO();
             
-            DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
+            DefaultTableModel model = (DefaultTableModel) listaClientes.getModel();
             model.setNumRows(0);
             
             ArrayList<Clientes> listagem = clientesdao.listarClientes();
