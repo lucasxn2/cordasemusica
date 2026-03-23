@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 
@@ -62,5 +63,28 @@ public class ClientesDAO {
 
         return lista;
     }
+         
+public List<String> listarCpfsClientes() {
+
+    List<String> lista = new ArrayList<>();
+
+    String sql = "SELECT cpf FROM clientes";
+
+    Connection conn = new ConexaoDB().conectDB();
+
+    try {
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            lista.add(rs.getString("cpf"));
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return lista;
+}   
     
 }

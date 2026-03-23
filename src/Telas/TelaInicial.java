@@ -117,9 +117,9 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addComponent(btnClientes)
                 .addGap(65, 65, 65)
                 .addComponent(btnGuitarras)
-                .addGap(68, 68, 68)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(btnNovaVenda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addGap(73, 73, 73)
                 .addComponent(btnVendas)
                 .addGap(71, 71, 71))
         );

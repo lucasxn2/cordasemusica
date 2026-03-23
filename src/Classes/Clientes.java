@@ -50,6 +50,4 @@ public class Clientes {
         this.email = email;
     }
     
-    
-    
 }

@@ -40,7 +40,7 @@ private DefaultTableModel tablemodel;
         jLabel1 = new javax.swing.JLabel();
         btnExcluirGuitarra = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnVoltar2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnVoltar2.setText("Voltar");
@@ -161,8 +161,6 @@ private DefaultTableModel tablemodel;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluirGuitarra;
-    private javax.swing.JButton btnVoltar;
-    private javax.swing.JButton btnVoltar1;
     private javax.swing.JButton btnVoltar2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;

@@ -35,7 +35,7 @@ private DefaultTableModel tablemodel;
         jLabel1 = new javax.swing.JLabel();
         btnExcluirCliente = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnVoltar.setText("Voltar");
