@@ -86,5 +86,27 @@ public List<String> listarCpfsClientes() {
 
     return lista;
 }   
+
+
+public int buscarIdPorCpf(String cpf) {
+    int id = 0;
+    String sql = "SELECT ClientesID FROM clientes WHERE cpf = ?";
+
+    try (Connection conn = new ConexaoDB().conectDB();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setString(1, cpf);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            id = rs.getInt("ClientesID");
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Erro ao buscar ID do cliente: " + e.getMessage());
+    }
+
+    return id;
+}
     
 }

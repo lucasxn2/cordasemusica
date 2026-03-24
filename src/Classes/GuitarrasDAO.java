@@ -97,4 +97,26 @@ public class GuitarrasDAO {
     return lista;
 }
     
+    
+    public int buscarIdPorNome(String nome) {
+    int id = 0;
+    String sql = "SELECT GuitarrasID FROM guitarras WHERE nome = ?";
+
+    try (Connection conn = new ConexaoDB().conectDB();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setString(1, nome);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            id = rs.getInt("GuitarrasID");
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Erro ao buscar ID da guitarra: " + e.getMessage());
+    }
+
+    return id;
+}
+    
 }

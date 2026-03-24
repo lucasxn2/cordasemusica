@@ -1,19 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Telas;
 
 import Classes.ClientesDAO;
 import Classes.GuitarrasDAO;
+import Classes.Vendas;
+import Classes.VendasDAO;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 
 
-/**
- *
- * @author lxn56
- */
+
 public class CadastroVendasVIEW extends javax.swing.JFrame {
 
     /**
@@ -165,23 +162,29 @@ public class CadastroVendasVIEW extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
-        /*if (txtNome.getText().trim().isEmpty()
-            || txtCpf.getText().trim().isEmpty()
-            || txtTelefone.getText().trim().isEmpty()
-            || txtEmail.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
-            return;
-        }
+    String cpf = cmbCliente.getSelectedItem().toString();
+    String nomeGuitarra = cmbGuitarra.getSelectedItem().toString();
+    String data = txtData.getText();
 
-        Clientes cliente = new Clientes();
+    ClientesDAO clientesDAO = new ClientesDAO();
+    GuitarrasDAO guitarrasDAO = new GuitarrasDAO();
 
-        cliente.setNome(txtNome.getText());
-        cliente.setCpf(txtCpf.getText());
-        cliente.setTelefone(txtTelefone.getText());
-        cliente.setEmail(txtEmail.getText());
+    int idCliente = clientesDAO.buscarIdPorCpf(cpf);
+    int idGuitarra = guitarrasDAO.buscarIdPorNome(nomeGuitarra);
 
-        ClientesDAO dao = new ClientesDAO();
-        dao.cadastrarCliente(cliente);*/
+    if (idCliente == 0 || idGuitarra == 0) {
+        JOptionPane.showMessageDialog(null, "Erro ao encontrar cliente ou guitarra!");
+        return;
+    }
+
+    Vendas venda = new Vendas();
+    venda.setIdCliente(idCliente);
+    venda.setIdGuitarra(idGuitarra);
+    venda.setDataVenda(data);
+
+    VendasDAO vendasDAO = new VendasDAO();
+    vendasDAO.cadastrarVenda(venda);
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
