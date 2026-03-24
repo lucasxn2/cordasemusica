@@ -4,6 +4,9 @@
  */
 package Telas;
 
+import Classes.Vendas;
+import Classes.VendasDAO;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,6 +21,7 @@ private DefaultTableModel tablemodel;
     public ListaVendasVIEW() {
         initComponents();
         iniciarTabela();
+        carregarVendas();
     }
     
     public void iniciarTabela(){
@@ -145,4 +149,27 @@ private DefaultTableModel tablemodel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable listaVendas;
     // End of variables declaration//GEN-END:variables
+
+    
+    public void carregarVendas() {
+
+        try {
+            VendasDAO vendasdao = new VendasDAO();
+            
+            DefaultTableModel model = (DefaultTableModel) listaVendas.getModel();
+            model.setNumRows(0);
+            
+            ArrayList<Vendas> listagem = vendasdao.listarVendas();
+            
+            for(int i = 0; i < listagem.size(); i++){
+                model.addRow(new Object[]{
+                    listagem.get(i).getIdCliente(),
+                    listagem.get(i).getIdGuitarra(),
+                    listagem.get(i).getDataVenda(),
+                });
+            }
+        } catch (Exception e) {
+        }
+    }
+
 }
