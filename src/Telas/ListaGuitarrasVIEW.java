@@ -26,7 +26,7 @@ private DefaultTableModel tablemodel;
     }
 
     public void iniciarTabela(){
-    tablemodel = new DefaultTableModel(new Object[]{"ID", "Marca", "Modelo", "Fabricação", "Cor", "Preço"}, 0);
+    tablemodel = new DefaultTableModel(new Object[]{"ID", "Nome", "Marca", "Modelo", "Fabricação", "Cor", "Preço"}, 0);
     listaGuitarras.setModel(tablemodel);
     }
     /**
@@ -187,6 +187,7 @@ private void listarGuitarras() {
                     listagem.get(i).getMarca(),
                     listagem.get(i).getModelo(),
                     listagem.get(i).getFabricacao(),
+                    listagem.get(i).getCor(),
                     listagem.get(i).getPreco()
                 });
             }

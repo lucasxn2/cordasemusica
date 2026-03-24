@@ -12,6 +12,36 @@ import javax.swing.JOptionPane;
 
 public class GuitarrasDAO {
     
+    
+    public void cadastrarGuitarra(Guitarras guitarra) {
+
+        String sql = "INSERT INTO guitarras (nome, marca, modelo, fabricacao, cor, preco) VALUES (?, ?, ?, ?, ?, ?)";
+
+        ConexaoDB conexaoDB = new ConexaoDB();
+        Connection conn = conexaoDB.conectDB();
+
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, guitarra.getNome());
+            stmt.setString(2, guitarra.getMarca());
+            stmt.setString(3, guitarra.getModelo());
+            stmt.setString(4, guitarra.getFabricacao());
+            stmt.setString(5, guitarra.getCor());
+            stmt.setDouble(6, guitarra.getPreco());
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Guitarra cadastrada com sucesso!");
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao cadastrar guitarra:");
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
      public ArrayList<Guitarras> listarGuitarras(){
 
         ArrayList<Guitarras> lista = new ArrayList<>();
@@ -29,6 +59,7 @@ public class GuitarrasDAO {
                 guitarra.setMarca(rs.getString("marca"));
                 guitarra.setModelo(rs.getString("modelo"));
                 guitarra.setFabricacao(rs.getString("fabricacao"));
+                guitarra.setCor(rs.getString("cor"));
                 guitarra.setPreco(rs.getInt("preco"));
 
                 lista.add(guitarra);

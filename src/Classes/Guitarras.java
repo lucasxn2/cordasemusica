@@ -67,6 +67,10 @@ public class Guitarras {
     public void setPreco(Integer preco) {
         this.preco = preco;
     }
+
+
+
+
     
     
     

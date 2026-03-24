@@ -4,6 +4,10 @@
  */
 package Telas;
 
+import Classes.Guitarras;
+import Classes.GuitarrasDAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lxn56
@@ -28,16 +32,18 @@ public class CadastroGVIEW extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtNome = new javax.swing.JTextField();
-        txtTelefone = new javax.swing.JTextField();
-        txtCpf = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
+        txtFabricacao = new javax.swing.JTextField();
+        txtModelo = new javax.swing.JTextField();
+        txtCor = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnCadastrar = new javax.swing.JButton();
-        txtEmail1 = new javax.swing.JTextField();
+        txtPreco = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        txtMarca = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         btnListaGuitarras = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -53,14 +59,14 @@ public class CadastroGVIEW extends javax.swing.JFrame {
             }
         });
 
-        txtTelefone.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtFabricacao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        txtCpf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtModelo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        txtEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtCor.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel2.setText("Marca:");
+        jLabel2.setText("Nome:");
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("Modelo:");
@@ -79,60 +85,77 @@ public class CadastroGVIEW extends javax.swing.JFrame {
             }
         });
 
-        txtEmail1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtPreco.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel6.setText("Preço:");
+
+        txtMarca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMarcaActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel7.setText("Marca:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                    .addComponent(txtTelefone)
-                    .addComponent(txtCpf)
-                    .addComponent(txtNome)
-                    .addComponent(txtEmail1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
-                .addGap(80, 80, 80))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(174, 174, 174)
-                .addComponent(btnCadastrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(btnCadastrar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                            .addComponent(txtModelo, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtFabricacao, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCor, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPreco, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNome))))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFabricacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
                 .addComponent(btnCadastrar)
                 .addGap(14, 14, 14))
         );
@@ -203,23 +226,27 @@ public class CadastroGVIEW extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
-        /*if (txtNome.getText().trim().isEmpty()
-            || txtCpf.getText().trim().isEmpty()
-            || txtTelefone.getText().trim().isEmpty()
-            || txtEmail.getText().trim().isEmpty()) {
+        if (txtNome.getText().trim().isEmpty()
+            || txtMarca.getText().trim().isEmpty()
+            || txtModelo.getText().trim().isEmpty()
+            || txtFabricacao.getText().trim().isEmpty()
+            || txtCor.getText().trim().isEmpty()
+            || txtPreco.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
             return;
         }
 
-        Clientes cliente = new Clientes();
+        Guitarras guitarra = new Guitarras();
 
-        cliente.setNome(txtNome.getText());
-        cliente.setCpf(txtCpf.getText());
-        cliente.setTelefone(txtTelefone.getText());
-        cliente.setEmail(txtEmail.getText());
+        guitarra.setNome(txtNome.getText());
+        guitarra.setMarca(txtMarca.getText());
+        guitarra.setModelo(txtModelo.getText());
+        guitarra.setFabricacao(txtFabricacao.getText());
+        guitarra.setCor(txtCor.getText());
+        guitarra.setPreco(Integer.parseInt(txtPreco.getText()));
 
-        ClientesDAO dao = new ClientesDAO();
-        dao.cadastrarCliente(cliente);*/
+        GuitarrasDAO dao = new GuitarrasDAO();
+        dao.cadastrarGuitarra(guitarra);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnListaGuitarrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaGuitarrasActionPerformed
@@ -232,6 +259,10 @@ public class CadastroGVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMarcaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,11 +309,13 @@ public class CadastroGVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtCpf;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtEmail1;
+    private javax.swing.JTextField txtCor;
+    private javax.swing.JTextField txtFabricacao;
+    private javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtTelefone;
+    private javax.swing.JTextField txtPreco;
     // End of variables declaration//GEN-END:variables
 }
