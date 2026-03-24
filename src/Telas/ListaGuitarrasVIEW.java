@@ -4,6 +4,9 @@
  */
 package Telas;
 
+import Classes.Guitarras;
+import Classes.GuitarrasDAO;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,6 +21,7 @@ private DefaultTableModel tablemodel;
     public ListaGuitarrasVIEW() {
         initComponents();
         iniciarTabela();
+        listarGuitarras();
         
     }
 
@@ -166,4 +170,29 @@ private DefaultTableModel tablemodel;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable listaGuitarras;
     // End of variables declaration//GEN-END:variables
+
+private void listarGuitarras() {
+        try {
+            GuitarrasDAO guitarrasdao = new GuitarrasDAO();
+            
+            DefaultTableModel model = (DefaultTableModel) listaGuitarras.getModel();
+            model.setNumRows(0);
+            
+            ArrayList<Guitarras> listagem = guitarrasdao.listarGuitarras();
+            
+            for(int i = 0; i < listagem.size(); i++){
+                model.addRow(new Object[]{
+                    listagem.get(i).getId(),
+                    listagem.get(i).getNome(),
+                    listagem.get(i).getMarca(),
+                    listagem.get(i).getModelo(),
+                    listagem.get(i).getFabricacao(),
+                    listagem.get(i).getPreco()
+                });
+            }
+        } catch (Exception e) {
+        }
+    }
+
+
 }

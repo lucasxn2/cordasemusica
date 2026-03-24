@@ -4,11 +4,20 @@ package Classes;
 
 public class Guitarras {
     private Integer id;
+    private String nome;
     private String marca;
     private String modelo;
     private String fabricacao;
     private String cor;
     private Integer preco;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
     
 
     public Integer getId() {
