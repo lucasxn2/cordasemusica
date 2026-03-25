@@ -62,7 +62,7 @@ private DefaultTableModel tablemodel;
         jLabel1.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
         jLabel1.setText("Lista de Clientes");
 
-        btnExcluirCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnExcluirCliente.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         btnExcluirCliente.setText("Excluir Cliente");
         btnExcluirCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,8 +101,8 @@ private DefaultTableModel tablemodel;
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnExcluirCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(btnExcluirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVoltar)
                 .addContainerGap())
         );
