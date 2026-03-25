@@ -7,6 +7,7 @@ package Telas;
 import Classes.Guitarras;
 import Classes.GuitarrasDAO;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,20 +16,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListaGuitarrasVIEW extends javax.swing.JFrame {
 
-private DefaultTableModel tablemodel;
+    private DefaultTableModel tablemodel;
 
-    
     public ListaGuitarrasVIEW() {
         initComponents();
         iniciarTabela();
         listarGuitarras();
-        
+
     }
 
-    public void iniciarTabela(){
-    tablemodel = new DefaultTableModel(new Object[]{"ID", "Nome", "Marca", "Modelo", "Fabricação", "Cor", "Preço"}, 0);
-    listaGuitarras.setModel(tablemodel);
+    public void iniciarTabela() {
+        tablemodel = new DefaultTableModel(new Object[]{"ID", "Nome", "Marca", "Modelo", "Fabricação", "Cor", "Preço"}, 0);
+        listaGuitarras.setModel(tablemodel);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -126,6 +127,35 @@ private DefaultTableModel tablemodel;
 
     private void btnExcluirGuitarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirGuitarraActionPerformed
         // TODO add your handling code here:
+        
+        int linhaSelecionada = listaGuitarras.getSelectedRow();
+
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione uma guitarra para excluir.");
+            return;
+        }
+
+        int idCliente = (int) listaGuitarras.getValueAt(linhaSelecionada, 0);
+
+        String[] opcoes = {"Sim", "Não"};
+
+        int confirmacao = JOptionPane.showOptionDialog(
+                null,
+                "Tem certeza que deseja excluir esta guitarra?",
+                "Confirmação",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opcoes,
+                opcoes[0]
+        );
+
+        if (confirmacao == JOptionPane.YES_OPTION) {
+            GuitarrasDAO dao = new GuitarrasDAO();
+            dao.excluirGuitarra(idCliente);
+
+            listarGuitarras(); // Atualiza a tabela
+        }
     }//GEN-LAST:event_btnExcluirGuitarraActionPerformed
 
     /**
@@ -171,16 +201,16 @@ private DefaultTableModel tablemodel;
     private javax.swing.JTable listaGuitarras;
     // End of variables declaration//GEN-END:variables
 
-private void listarGuitarras() {
+    private void listarGuitarras() {
         try {
             GuitarrasDAO guitarrasdao = new GuitarrasDAO();
-            
+
             DefaultTableModel model = (DefaultTableModel) listaGuitarras.getModel();
             model.setNumRows(0);
-            
+
             ArrayList<Guitarras> listagem = guitarrasdao.listarGuitarras();
-            
-            for(int i = 0; i < listagem.size(); i++){
+
+            for (int i = 0; i < listagem.size(); i++) {
                 model.addRow(new Object[]{
                     listagem.get(i).getId(),
                     listagem.get(i).getNome(),
@@ -194,6 +224,5 @@ private void listarGuitarras() {
         } catch (Exception e) {
         }
     }
-
 
 }

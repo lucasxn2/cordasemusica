@@ -145,7 +145,7 @@ private DefaultTableModel tablemodel;
         ClientesDAO dao = new ClientesDAO();
         dao.excluirCliente(idCliente);
 
-        listarClientes(); // Atualiza a tabela
+        listarClientes();
     }
 
     }//GEN-LAST:event_btnExcluirClienteActionPerformed

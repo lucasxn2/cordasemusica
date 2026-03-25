@@ -1,4 +1,3 @@
-
 package Classes;
 
 import java.sql.Connection;
@@ -9,10 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
 public class GuitarrasDAO {
-    
-    
+
+    // MÉTODO PARA CADASTRAR GUITARRAS
     public void cadastrarGuitarra(Guitarras guitarra) {
 
         String sql = "INSERT INTO guitarras (nome, marca, modelo, fabricacao, cor, preco) VALUES (?, ?, ?, ?, ?, ?)";
@@ -39,19 +37,17 @@ public class GuitarrasDAO {
             e.printStackTrace();
         }
     }
-    
-    
-    
-     public ArrayList<Guitarras> listarGuitarras(){
+// ---------------------------------------------------------------------------------------------------
+
+    // MÉTODO PARA LISTAR GUITARRAS CADASTRADAS
+    public ArrayList<Guitarras> listarGuitarras() {
 
         ArrayList<Guitarras> lista = new ArrayList<>();
         String sql = "SELECT * FROM guitarras";
 
-        try (Connection conn = new ConexaoDB().conectDB();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+        try (Connection conn = new ConexaoDB().conectDB(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
 
-            while(rs.next()){
+            while (rs.next()) {
                 Guitarras guitarra = new Guitarras();
 
                 guitarra.setId(rs.getInt("guitarrasid"));
@@ -71,52 +67,69 @@ public class GuitarrasDAO {
 
         return lista;
     }
-    
-    
-    
+// ---------------------------------------------------------------------------------------------------
+
+    // MÉTODO QUE LISTA OS NOMES DAS GUITARRAS PARA APARECER NO COMBO BOX
     public List<String> listarNomesGuitarras() {
 
-    List<String> lista = new ArrayList<>();
+        List<String> lista = new ArrayList<>();
 
-    String sql = "SELECT nome FROM guitarras";
+        String sql = "SELECT nome FROM guitarras";
 
-    Connection conn = new ConexaoDB().conectDB();
+        Connection conn = new ConexaoDB().conectDB();
 
-    try {
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        ResultSet rs = stmt.executeQuery();
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
-        while (rs.next()) {
-            lista.add(rs.getString("nome"));
+            while (rs.next()) {
+                lista.add(rs.getString("nome"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-    } catch (SQLException e) {
-        e.printStackTrace();
+        return lista;
     }
+// ---------------------------------------------------------------------------------------------------
 
-    return lista;
-}
-    
-    
+    // MÉTODO QUE BUSCA O ID PELO NOME DA GUITARRA (O ID É ADICIONADO A TABELA VENDAS)
     public int buscarIdPorNome(String nome) {
-    int id = 0;
-    String sql = "SELECT GuitarrasID FROM guitarras WHERE nome = ?";
+        int id = 0;
+        String sql = "SELECT GuitarrasID FROM guitarras WHERE nome = ?";
 
-    try (Connection conn = new ConexaoDB().conectDB();
-         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = new ConexaoDB().conectDB(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-        stmt.setString(1, nome);
-        ResultSet rs = stmt.executeQuery();
+            stmt.setString(1, nome);
+            ResultSet rs = stmt.executeQuery();
 
-        if (rs.next()) {
-            id = rs.getInt("GuitarrasID");
+            if (rs.next()) {
+                id = rs.getInt("GuitarrasID");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar ID da guitarra: " + e.getMessage());
         }
 
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Erro ao buscar ID da guitarra: " + e.getMessage());
+        return id;
+    }
+// ---------------------------------------------------------------------------------------------------
+
+    // MÉTODO PARA EXCLUIR GUITARRAS DA TABELA
+    public void excluirGuitarra(int id) {
+        String sql = "DELETE FROM guitarras WHERE GuitarrasID = ?";
+
+        try (Connection conn = new ConexaoDB().conectDB(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Guitarra Excluída com sucesso!");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao Excluir Guitarra: " + e.getMessage());
+        }
     }
 
-    return id;
-}
-    
 }
