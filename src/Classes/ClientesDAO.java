@@ -108,5 +108,22 @@ public int buscarIdPorCpf(String cpf) {
 
     return id;
 }
+
+
+public void excluirCliente(int id) {
+    String sql = "DELETE FROM clientes WHERE ClientesID = ?";
+
+    try (Connection conn = new ConexaoDB().conectDB();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setInt(1, id);
+        stmt.executeUpdate();
+
+        JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso!");
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Erro ao excluir cliente: " + e.getMessage());
+    }
+}
     
 }

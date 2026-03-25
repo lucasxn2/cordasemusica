@@ -4,6 +4,7 @@ package Telas;
 import Classes.Clientes;
 import Classes.ClientesDAO;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ListaClientesVIEW extends javax.swing.JFrame {
@@ -63,6 +64,11 @@ private DefaultTableModel tablemodel;
 
         btnExcluirCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnExcluirCliente.setText("Excluir Cliente");
+        btnExcluirCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,6 +115,40 @@ private DefaultTableModel tablemodel;
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirClienteActionPerformed
+        // TODO add your handling code here:
+
+    int linhaSelecionada = listaClientes.getSelectedRow();
+
+    if (linhaSelecionada == -1) {
+        JOptionPane.showMessageDialog(null, "Selecione um cliente para excluir.");
+        return;
+    }
+
+    int idCliente = (int) listaClientes.getValueAt(linhaSelecionada, 0);
+
+    String[] opcoes = {"Sim", "Não"};
+
+    int confirmacao = JOptionPane.showOptionDialog(
+            null,
+            "Tem certeza que deseja excluir este cliente?",
+            "Confirmação",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            opcoes,
+            opcoes[0]
+    );
+
+    if (confirmacao == JOptionPane.YES_OPTION) {
+        ClientesDAO dao = new ClientesDAO();
+        dao.excluirCliente(idCliente);
+
+        listarClientes(); // Atualiza a tabela
+    }
+
+    }//GEN-LAST:event_btnExcluirClienteActionPerformed
 
     /**
      * @param args the command line arguments
