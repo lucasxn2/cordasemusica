@@ -100,7 +100,7 @@ public class CadastroCVIEW extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel5.setText("Email:");
 
-        btnCadastrar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnCadastrar.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +127,7 @@ public class CadastroCVIEW extends javax.swing.JFrame {
                     .addComponent(txtNome))
                 .addGap(80, 80, 80))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(171, 171, 171)
+                .addGap(164, 164, 164)
                 .addComponent(btnCadastrar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -150,8 +150,8 @@ public class CadastroCVIEW extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(btnCadastrar)
+                .addGap(18, 18, 18)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
 
@@ -163,7 +163,7 @@ public class CadastroCVIEW extends javax.swing.JFrame {
             }
         });
 
-        btnClientesCadastrados.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnClientesCadastrados.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         btnClientesCadastrados.setText("Clientes Cadastrados");
         btnClientesCadastrados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,7 +182,7 @@ public class CadastroCVIEW extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnVoltar)
-                .addGap(115, 115, 115)
+                .addGap(102, 102, 102)
                 .addComponent(btnClientesCadastrados)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -199,13 +199,13 @@ public class CadastroCVIEW extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                         .addComponent(btnVoltar)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnClientesCadastrados)
-                        .addContainerGap(25, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnClientesCadastrados, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
